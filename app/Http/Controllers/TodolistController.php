@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Services\TodolistService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TodolistController extends Controller
 {
@@ -35,11 +36,13 @@ class TodolistController extends Controller
         }
 
         $this->todolistService->saveTodo(uniqid(), $todo);
+        // Alert::success('Hore!', 'Todo Created Successfully');
+        toast('Your Post as been submited!','success');
         return redirect()->action([TodolistController::class, 'todolist']);
     }
 
     public function removeTodo(Request $request, string $todoId): RedirectResponse {
         $this->todolistService->removeTodo($todoId);
-        return redirect()->action([TodolistController::class, 'todolist']);
+        return redirect()->action([TodolistController::class, 'todolist'])->with('success', 'Deleted Succesfully');
     }
 }

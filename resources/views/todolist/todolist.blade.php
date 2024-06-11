@@ -11,12 +11,13 @@
 </head>
 <body>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    @include('sweetalert::alert')
     @if (isset($error))
-        <div class="row">
+        {{-- <div class="row">
             <div class="alert alert-danger" role="alert">
                 {{ $error }}
             </div>
-        </div>
+        </div> --}}
     @endif
     <div class="row">
         <form method="post" action="/logout">
@@ -50,18 +51,18 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Todo</th>
-                    <th scope="col"></th>
+                    <th scope="col">action</th>
                 </tr>
                 </thead>
                 <tbody>
                     @foreach ($todolist as $todo)
                         <tr>
-                            <th scope="row">{{ $todo['id'] }}</th>
-                            <td>{{ $todo['todo'] }}</td>
+                            <th>{{ $todo['id'] }}</th>
+                            <td scope="row">{{ $todo['todo'] }}</td>
                             <td>
                                 <form action="/todolist/{{ $todo['id'] }}/delete" method="post">
                                     @csrf
-                                    <button class="w-100 btn btn-lg btn-danger" type="submit">Remove</button>
+                                    <button class="btn btn-outline-danger" type="submit" data-confirm-delete="true"><i class="fa-sm fa-solid fa-trash"></i></button>
                                 </form>
                                 {{-- <a href="/todolist/{{ $todo["id"] }}/delete" class="w-100 btn btn-danger btn-m">remove</a> --}}
                             </td>
@@ -72,5 +73,6 @@
         </div>
     </div>
 </div>
+<script src="https://kit.fontawesome.com/dce29a683d.js" crossorigin="anonymous"></script>
 </body>
 </html>

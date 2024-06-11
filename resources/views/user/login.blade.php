@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    @include('sweetalert::alert')
     @if (isset($error))
         <div class="row">
             <div class="alert alert-danger" role="alert">
@@ -39,5 +40,6 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

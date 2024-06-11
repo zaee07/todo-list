@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\UserService;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Services\UserService;
 use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -42,6 +43,7 @@ class UserController extends Controller
             $request->session()->put('user', $user);
             return redirect('/');
         }
+        Alert::success('Berhasil!', 'berhaisl'); //'Post Created Successfully');
 
         return response()->view('user.login',
         [
@@ -52,6 +54,7 @@ class UserController extends Controller
 
     public function doLogout(request $request) {
         $request->session()->forget("user");
+        Alert::success('Berhasil!', ''); //'Post Created Successfully');
         return redirect("/");
         
     }
