@@ -7,6 +7,13 @@
     <title>{{ $title }}</title>
 </head>
 <body>
+    @while ($i <10)
+        num : {{ $i }}
+        @php
+            $i++;
+        @endphp
+        {{-- {{ $i++ }} --}}
+    @endwhile
     @if ($hobbies >= 1)
         @for ($i =0; $i<= 10; $i++)
             <p>{{ $i }}</p>

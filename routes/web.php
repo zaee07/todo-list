@@ -43,6 +43,7 @@ Route::get('/loop', function () {
         'hobbies' => ['coding', 'gaming', 'Watching'],
         'drink' => ['tea', 'coffee', 'milk'],
         'name' => [],
+        'i' => 0,
         'title' => 'Looping in blade engine'
     ]);
 })->name('loop');
