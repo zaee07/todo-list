@@ -36,3 +36,13 @@ Route::controller(TodolistController::class)->middleware(OnlyMemberMiddleware::c
         Route::post('/todolist', 'addTodo');
         Route::post('/todolist/{id}/delete', 'removeTodo');
     });
+
+Route::get('/loop', function () {
+    return view('loop',
+    [
+        'hobbies' => ['coding', 'gaming', 'Watching'],
+        'drink' => ['tea', 'coffee', 'milk'],
+        'name' => [],
+        'title' => 'Looping in blade engine'
+    ]);
+})->name('loop');
