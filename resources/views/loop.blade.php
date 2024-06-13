@@ -20,7 +20,7 @@
         @endfor
         <ul>
         @foreach ($hobbies as $hobby)
-            <li>{{ $hobby }}</li>
+            <li>{{ $loop->iteration }}. {{ $hobby }}</li>
         @endforeach
         @forelse ($name as $n)
             {{ $n }}    
